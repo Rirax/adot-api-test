@@ -1,0 +1,11 @@
+{
+  "name": "adotapitest",
+  "version": 2,
+  "builds": [
+    { "src": "/api/lambdas/*.js", "use": "@now/node" }
+  ],
+  "routes": [
+    { "src": "/binds", "dest": "/api/lambdas/bind.js" }
+  ],
+  "alias": "adot-api-test"
+}
