@@ -2,10 +2,24 @@
   "name": "adotapitest",
   "version": 2,
   "builds": [
-    { "src": "/api/lambdas/*.js", "use": "@now/node" }
+    { "src": "/api/lambdas/*.js", "use": "@now/node" },
+    {
+      "src": "*.css", "use": "@now/static" },
+    {
+      "src": "*.md",
+      "use": "@now/md",
+      "config": {
+        "title": "Adot API Test",
+        "language": "fr",
+        "meta": [{ "name": "description", "content": "Test technique pour Adot"}],
+        "css": "/style.css"
+      }
+    }
   ],
   "routes": [
-    { "src": "/binds", "dest": "/api/lambdas/bind.js" }
+    { "src": "/binds", "dest": "/api/lambdas/bind.js" },
+    { "src":"/(.*).css", "dest": "/$1.css" },
+    { "src":"/(.*)", "dest": "/$1.html" }
   ],
   "alias": "adot-api-test"
 }
